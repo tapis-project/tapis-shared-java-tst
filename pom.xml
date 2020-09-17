@@ -18,11 +18,11 @@
 
     <name>Tapis shared</name>
     <description>TAPIS shared Java code</description>
-    <url>https://github.com/tapis-project/tapis-shared-java</url>
+    <url>https://github.com/tapis-project/tapis-shared-java-tst</url>
 
     <scm>
-        <connection>scm:git:git@github.com:tapis-project/tapis-shared-java.git</connection>
-        <url>https://github.com/tapis-project/tapis-shared-java</url>
+        <connection>scm:git:git@github.com:tapis-project/tapis-shared-java-tst.git</connection>
+        <url>https://github.com/tapis-project/tapis-shared-java-tst</url>
         <tag>HEAD</tag>
     </scm>
 
