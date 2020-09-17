@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>edu.utexas.tacc.tapis</groupId>
 		<artifactId>tapis-shared-java-tst</artifactId>
-		<version>1.11.2-SNAPSHOT</version>
+		<version>1.11.2</version>
 
 	</parent>
 	
