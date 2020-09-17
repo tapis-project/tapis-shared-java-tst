@@ -1,0 +1,11 @@
+edu/utexas/tacc/tapis/shareddb/datasource/DataSourceProvider.class
+edu/utexas/tacc/tapis/shareddb/datasource/TenantIdProvider.class
+edu/utexas/tacc/tapis/shareddb/CreateDatabaseParameters.class
+edu/utexas/tacc/tapis/shareddb/CreateDatabase.class
+edu/utexas/tacc/tapis/shareddb/datasource/HikariDSGenerator$1.class
+edu/utexas/tacc/tapis/shareddb/datasource/TapisDataSource.class
+edu/utexas/tacc/tapis/shareddb/datasource/HikariDSGenerator$MetricReporterType.class
+edu/utexas/tacc/tapis/shareddb/datasource/HikariDSGenerator.class
+edu/utexas/tacc/tapis/shareddb/migrate/TapisJDBCMigrate.class
+edu/utexas/tacc/tapis/shareddb/migrate/TapisJDBCMigrateParms.class
+edu/utexas/tacc/tapis/shareddb/TapisDBUtils.class

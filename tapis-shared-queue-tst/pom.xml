@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>edu.utexas.tacc.tapis</groupId>
+    <artifactId>tapis-shared-java-tst</artifactId>
+    <version>1.11.0-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>tapis-shared-queue-tst</artifactId>
+  
+  <name>Tapis Message Queue Library</name>
+  <description>Shared library for access RabbitMQ</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>tapis-shared-lib-tst</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+        </dependency>
+    </dependencies>
+    
+    <build>
+    
+        <finalName>queue-tst</finalName>
+    </build>
+
+</project>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>edu.utexas.tacc.tapis</groupId>
+        <artifactId>tapis-bom-tst</artifactId>
+        <version>[1.11,2.0)</version>
+        <!-- Set empty relative path to avoid maven warning and-->
+        <!--   ensure parent is found in local repository if that-->
+        <!--   is the only place it exists.-->
+        <!--	<relativePath></relativePath>-->
+    </parent>
+
+    <artifactId>tapis-shared-java-tst</artifactId>
+    <version>1.11.0-SNAPSHOT</version>
+
+    <name>Tapis shared</name>
+    <description>TAPIS shared Java code</description>
+    <url>https://github.com/tapis-project/tapis-shared-java</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:tapis-project/tapis-shared-java.git</connection>
+        <url>https://github.com/tapis-project/tapis-shared-java</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <!--  Default to no release to suppress signing etc      -->
+        <skip.signing>true</skip.signing>
+        <!-- Source encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Most properties set in parent tapis-bom   -->
+        <!-- Properties can be overridden here         -->
+        <!-- Version of tapis-shared-java to be used.  --> 
+        <!-- Individual projects may want to override. -->
+<!--        <tapis-client-java.version>1.11.0</tapis-client-java.version>-->
+    </properties>
+
+    <repositories>
+      <!-- Include snapshot repo so we can pickup snapshot version of parent bom -->
+      <repository>
+        <id>oss.sonatype.org-snapshot</id>
+        <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+        <releases>
+          <enabled>false</enabled>
+        </releases>
+        <snapshots>
+          <enabled>true</enabled>
+          <updatePolicy>always</updatePolicy>
+        </snapshots>
+      </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <!-- There are only test dependencies on testng -->
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <modules>
+        <module>tapis-shared-db-tst</module>
+        <module>tapis-shared-api-tst</module>
+        <module>tapis-shared-lib-tst</module>
+        <module>tapis-shared-queue-tst</module>
+        <module>tapis-shared-searchlib-tst</module>
+    </modules>
+
+</project>

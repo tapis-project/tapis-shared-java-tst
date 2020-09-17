@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>edu.utexas.tacc.tapis</groupId>
+		<artifactId>tapis-shared-java-tst</artifactId>
+		<version>1.11.0-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>tapis-shared-searchlib-tst</artifactId>
+	
+	<name>Tapis Search Facility</name>
+	<description>Tapis search library</description>
+
+	<dependencies>
+        <dependency>
+            <groupId>net.java.dev.javacc</groupId>
+            <artifactId>javacc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-client</artifactId>
+        </dependency>
+	</dependencies>
+	
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+
+        <plugins>
+            <!-- Capture the git commit hash and branch identifiers. -->
+            <!-- See parent pom for configuration details. -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+            </plugin>
+            
+        <!-- Compile the builder program that calls the parser generator -->    
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>compile-generator</id>
+                    <phase>generate-sources</phase>
+                    <goals>
+                         <goal>compile</goal>
+                    </goals>
+                    <configuration>
+                        <includes>
+                            <include>edu/utexas/tacc/tapis/search/generator/*.java</include>
+                        </includes>
+                        <excludes>
+                            <exclude>edu/utexas/tacc/tapis/search</exclude>
+                        </excludes>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>            
+     
+        <!-- Run the builder program to generate the parser source files -->
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>${exec-maven-plugin.version}</version>
+            <executions>
+                <execution>
+                    <id>generate-codes</id>
+                    <goals>
+                        <goal>java</goal>
+                    </goals>
+                    <phase>process-sources</phase>
+                    <configuration>
+                        <mainClass>edu.utexas.tacc.tapis.search.generator.BuildSelectorParser</mainClass>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+        <plugin>
+                <!-- The version is set in the parent pom -->
+                <!-- SKIPPING all tests.                  -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <finalName>searchlib-tst</finalName>
+    </build>
+</project>

@@ -1,0 +1,11 @@
+edu/utexas/tacc/tapis/sharedapi/jwt/JJWTTestNGTest.class
+edu/utexas/tacc/tapis/sharedapi/dto/TestDTO.class
+edu/utexas/tacc/tapis/sharedapi/security/ServiceJWTTest.class
+edu/utexas/tacc/tapis/sharedapi/dto/ResponseWrapperTest.class
+edu/utexas/tacc/tapis/sharedapi/jwt/JWTValidateRequestFilterNegativeSignatureTest.class
+edu/utexas/tacc/tapis/sharedapi/jwt/JWTValidateRequestFilterNegativeClaimTest.class
+edu/utexas/tacc/tapis/sharedapi/keys/KeyManagerTest.class
+edu/utexas/tacc/tapis/sharedapi/jwt/CreateJWTTest.class
+edu/utexas/tacc/tapis/sharedapi/keys/CreateKeyTest.class
+edu/utexas/tacc/tapis/sharedapi/jwt/JJWTTest.class
+edu/utexas/tacc/tapis/sharedapi/jwt/JJWTTest$KeyStoreFile.class

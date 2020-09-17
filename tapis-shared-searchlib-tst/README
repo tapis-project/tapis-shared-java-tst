@@ -1,0 +1,74 @@
+Overview
+========
+
+The tapis-shared-searchlib project generates, compiles and packages the SQL expression language
+used in Tapis search filters.  This language is based on the JMS Message expression language used
+by Apache ActiveMQ.  We adopted ActiveMQ's JavaCC grammar file and regenerate the parser with, if
+necessary, any Tapis customizations that we may need.  The following links provide background
+information for our approach.
+
+// ActiveMQ parser javadocs.
+https://activemq.apache.org/maven/apidocs/org/apache/activemq/selector/SelectorParser.html
+
+// JMS message interface specification.
+https://docs.oracle.com/javaee/7/api/javax/jms/Message.html
+
+// Original ActiveMQ grammar file.
+https://github.com/apache/activemq/blob/master/activemq-client/src/main/grammar/SelectorParser.jj
+
+// JavaCC parser generator.
+https://javacc.github.io/javacc/
+
+// Previous direct use of ActiveMQ parser in Aloe.
+https://bitbucket.org/tacc-cic/aloe/src/master/aloe-jobslib/src/main/java/edu/utexas/tacc/aloe/jobs/queue/SelectorFilter.java 
+
+Building
+========
+
+After wasting an inordinate amount of time trying to get a single POM file to generate the parser 
+source files and then to compile those source files, I decided to go with a 2 step process:
+
+    1. Run pom-generate.xml to generate the parser source code.
+       mvn -f pom-generate.xml clean process-sources
+    2. Run pom.xml to compile the parser, run tests, and create the JAR.
+       mvn clean install
+    
+Executing pom-generate.xml creates source files in src/main/java/org/apache/activemq/selector.
+These files are saved to the repository as if they were handwritten, which means we only have
+to run this POM file when we change the grammar file.  In most environments, this will most 
+likely be a MANUAL PROCESS since it occurs so rarely.
+
+Executing pom.xml performs the normal compile-test-jar build phases.  Both the builder class
+and the generated parser classes get built each time.
+
+Usage
+=====
+
+Only the TapisSelectorParser class should be called by Tapis code.  See ParserTest for usage examples.
+
+Language Support
+================
+
+The original ActiveMQ expression language includes support for built-in and custom functions,
+as well as xpath and xquery expressions.  The built-in functions are defined in 
+org.apache.activemq.filter.function.BuiltinFunctionRegistry.  These functions are: REGEX, 
+INLIST, MAKELIST, REPLACE and SPLIT.
+
+These capabilities have been removed from the Tapis grammar to maintain strict SQL '92 compliance.
+If we decided to add them back in the future, the initial commit contains the code.
+
+=====================
+AST Parser
+=====================
+An alternate parser that provides access to the abstract syntax tree is also available. It is based on the parser
+discussed above. Not all SQL constructs are supported. Please see ASTParser.jj for more information.
+To generate source code files (which are tracked in git) from the grammar file:
+    mvn -f pom-generate-ast.xml clean process-sources
+To build and run tests:
+    mvn clean install
+
+The JavaCC grammar file is at src/main/resources/edu/utexas/tacc/tapis/ASTParser.jj and the generated source
+code files (which are tracked in git) are in: src/main/java/edu/utexas/tacc/tapis/search/parser
+
+This parser translates the SQL operators into Tapis operators, for example <> becomes NEQ. Please see ASTParser.jj for
+the full mapping and for other caveats related to SQL support.

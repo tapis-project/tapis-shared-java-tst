@@ -1,0 +1,5 @@
+edu/utexas/tacc/tapis/sharedq/exceptions/TapisQueueException.class
+edu/utexas/tacc/tapis/sharedq/DeliveryResponse.class
+edu/utexas/tacc/tapis/sharedq/QueueManager.class
+edu/utexas/tacc/tapis/sharedq/QueueManagerNames.class
+edu/utexas/tacc/tapis/sharedq/QueueManagerParms.class
