@@ -14,7 +14,7 @@
     </parent>
 
     <artifactId>tapis-shared-java-tst</artifactId>
-    <version>1.11.7</version>
+    <version>1.11.8-SNAPSHOT</version>
 
     <name>Tapis shared</name>
     <description>TAPIS shared Java code</description>
@@ -23,7 +23,7 @@
     <scm>
         <connection>scm:git:git@github.com:tapis-project/tapis-shared-java-tst.git</connection>
         <url>https://github.com/tapis-project/tapis-shared-java-tst</url>
-        <tag>tapis-shared-java-tst-1.11.7</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
